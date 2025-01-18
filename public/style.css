@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {background:var(--bgr);
+    position: relative;
+}
+
+/*?Basic Css goes here */
+h1,h2,h3,h4,h5,h6{
+    color: var(--fontColor);
+    font-family: raleway;
+    font-weight: 700;
+}
+p{
+    font-family: raleway;
+    color: var(--fontColor);
+}
+footer{
+    color: var(--fontColor);
+}
+:root{
+    --bgr: #2c1114;
+    --formColor:#750d1c;
+    --fontColor:#ccd0cf;
+    --navColor:#c32339;
+}
+
+/*?Basic Css ends here */
+.main-container {
+  margin-top: 100px;
+  position: relative;
+  border-radius:10px ;
+  background:var(--formColor);
+  min-width: 50%;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-border-radius:10px ;
+  -moz-border-radius:10px ;
+  -ms-border-radius:10px ;
+  -o-border-radius:10px ;
+}
+
+.container1 {
+    display: flex;
+    /* Removed position absolute */
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 10px;
+}
+
+.btn {
+    color: antiquewhite;
+    border: 0px;
+    background: #094d92;
+    width: 50px;
+    height: 20px;
+    border-radius: 2px;
+    /* You can keep vendor prefixes if needed */
+}
+input[type="text"] {
+    width: 100%;
+    padding: 10px 15px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+input[type="text"]:focus {
+    border-color: #6a11cb;
+    box-shadow: 0 0 10px rgba(106, 17, 203, 0.2);
+    outline: none;
+    background-color: #fff;
+}
+
+input[type="text"]::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+#shorten_form{
+    position: relative;
+}
+li{
+    list-style-type: none;
+}
+
+/** Nav Css goes here */
+
+.nav--container{
+    height: 50px;
+  
+
+    background: var(--navColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+.nav--container ul   {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    & li a{
+        color: var(--fontColor);
+        text-decoration: none;
+        transition: .4 ease;
+        -webkit-transition: .4 ease;
+        -moz-transition: .4 ease;
+        -ms-transition: .4 ease;
+        -o-transition: .4 ease;
+}
+}
+.nav--container ul li {
+    color: var(--fontColor);
+    font-size: 25px;
+}
+.nav--container ul li a{
+    color: var(--fontColor);
+    text-decoration: none;
+    font-family: raleway;
+    font-weight: 500;
+    transition: 0.2s ease-in;
+    -webkit-transition: 0.2s ease-in;
+    -moz-transition: 0.2s ease-in;
+    -ms-transition: 0.2s ease-in;
+    -o-transition: 0.2s ease-in;
+}
+.nav--container ul li a:hover{
+    color: white;
+    font-weight: 700;
+}
+
+/** Nav Css ends here */
+
+/*?Main Container goes here */
+  .main---div{
+    position: relative;
+    display: flex;
+    max-width: 100%;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+  }
+/*?Main Container ends here */
+
+
+/*?text content Css goes here */
+.text-content{
+    position: relative;
+    top: 10px;
+    left: 35%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    max-width: 40%;
+}
+/*?text content Css ends here */
+
+/*?Why choose us goes here */
+.why-choose{
+    position: relative;
+    left: 0;
+    max-width: 40%;
+    min-width: 450px;
+}
+/*?Why choose us ends here */
+
+/*?Footer Css goes here */
+footer {
+    background-color: var(--navColor);
+    color: var(--fontColor);
+    text-align: center;
+    padding: 20px;
+    margin-top: 0;
+    width: 100%;
+    font-family: 'Raleway', sans-serif;
+}
+
+/**Button code goes here */
+
+.btn {
+    height: auto;
+    width: auto;
+    color: #fff;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    background: linear-gradient(45deg, #2575fc, #6a11cb);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/**Button code ends here */

@@ -1,0 +1,15 @@
+{
+  "name": "vid_31",
+  "version": "1.0.0",
+  "main": "urlShortner.js",
+  "scripts": {
+   "dev": "node --watch urlShortner.js",
+    "start": "node urlShortner.js"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "description": ""
+}

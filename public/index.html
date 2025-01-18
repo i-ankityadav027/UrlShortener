@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Teko:wght@300..700&display=swap"
+        rel="stylesheet">
+    <title>URL SHORTENER APP</title>
+</head>
+
+<body>
+
+    <div class="nav--container">
+        <ul>
+            <li class="item-li"><a href="/">Home</a></li>
+            <li class="item-li"><a href="/">Other features</a></li>
+            <li class="item-li"><a href="/">About us </a></li>
+            <li class="item-li"><a href="/">Contact us</a></li>
+    
+    
+        </ul>
+    
+    </div>
+    <div class="text-content">
+        <h1>Welcome to ShortenLink!</h1>
+        <h3>Transform your long URLs into sleek, shareable links!</h3>
+        <p>
+            Welcome to ShortenLink, your one-stop solution for creating neat, <br>concise URLs out of lengthy web
+            addresses.Whether you
+            need to simplify links <br> for social media, marketing campaigns, or personal use,
+            our app has got you covered.</p>
+    </div>
+    <div class="main---div">
+    <div class="why-choose text-container">
+        <h4>Why Choose ShortenLink?</h4>
+        <p>ShortenLink is the perfect tool for anyone looking to streamline their online presence. <br>Our app offers a
+            range of benefits, including:</p>
+        <ul>
+            <li><p>1.Easy-to-use interface</p></li>
+            <li><p>2.Customizable short links</p></li>
+            <li><p>3.Real-time link tracking</p></li>
+            <li><p>4.Secure, reliable service</p></li>
+        </ul>
+    
+</div>
+    <div class="main-container">
+        <form id="shorten_form">
+            <div class="container1">
+                <h1>Enter your link Here</h1>
+                <div class="input-field">
+                    <h3>Paste Link:</h3>
+                    <input type="text" name="url" id="url" placeholder="Enter Your Link">
+                </div>
+                <div class="input-field custom-url">
+                    <h3>Enter Custom:</h3>
+                    <input type="text" name="shortCode" id="shortCode" placeholder="Enter custom url">
+                </div>
+                <div class="output">
+                    <h3>Shortened Link:</h3>
+                    <div class="output__content"></div>
+                </div>
+                <button class="btn" type="submit">Shorten</button>
+            </div>
+        </form>
+       </div>
+    </div>
+    
+    <script>
+        const fetchShortened = async () => {
+            const response = await fetch("/links");
+            if (!response.ok) {
+                console.error("Failed to fetch links");
+                return;
+            }
+            const links = await response.json();
+            console.log("Links", links);
+            const outputContent = document.querySelector('.output__content');
+            outputContent.innerHTML = "";
+
+            if (Object.keys(links).length === 0) {
+                console.error("No links to show right now");
+                return;
+            }
+
+            for (const [shortCode, url] of Object.entries(links)) {
+                const li = document.createElement('li');
+                const truncate = url.length >= 30 ? `${url.slice(0, 30)}...` : url;
+                li.innerHTML = `<a href="${window.location.origin}/${shortCode}" target="_blank">${window.location.origin}/${shortCode}</a> -- ${truncate}`;
+                outputContent.appendChild(li);
+            }
+        }
+
+        document.getElementById('shorten_form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const url = formData.get('url');
+            const shortCode = formData.get('shortCode');
+
+            console.log('Original URL:', url);
+            console.log('Custom URL:', shortCode);
+
+            try {
+                const response = await fetch("http://localhost:3002/shorten", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ url, shortCode }),
+                });
+                if (response.ok) {
+                    fetchShortened();
+                    alert("Form submitted successfully");
+                    event.target.reset();
+                } else {
+                    const errorMessage = await response.text();
+                    alert(errorMessage);
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        });
+
+        fetchShortened();
+    </script>
+    <footer>Maintained and developed by Sajjan Kumar Singh</footer>
+</body>
+
+</html>
